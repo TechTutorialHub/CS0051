@@ -15,7 +15,7 @@ void incrementCounter(int iterations) {
         // No mutex needed because there's only one "worker" (no threads)
         ++counter;
         cout << "Counter: " << counter 
-                  << ", Iteration: " << i + 1 << std::endl;
+                  << ", Iteration: " << i + 1 << endl;
     }
 }
 
@@ -27,7 +27,7 @@ int main() {
     incrementCounter(iterations); // Second call
 
     // Print the final value of the counter
-    cout << "Final Counter Value: " << counter << std::endl;
+    cout << "Final Counter Value: " << counter << endl;
 
     return 0;
 }
