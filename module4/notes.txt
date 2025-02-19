@@ -1,0 +1,9 @@
+What is a Semaphore?
+A semaphore is a synchronization primitive used to control access to shared resources in concurrent programming. It allows you to limit the number of threads that can access a resource or perform an operation at the same time.
+
+There are two types of semaphores:
+
+Binary Semaphore : Acts like a mutex (lock), allowing only one thread to access a resource at a time.
+Counting Semaphore : Allows a specified number of threads to access a resource simultaneously.
+
+use c++20  <semaphore> header
