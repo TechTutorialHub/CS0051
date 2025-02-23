@@ -6,7 +6,7 @@
 #include <thread>
 #include <latch>
 
-using namespace std; // Include this line to avoid using "std::" prefix
+using namespace std; 
 
 latch launchLatch(3); // Latch for 3 systems
 
