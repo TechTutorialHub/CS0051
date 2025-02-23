@@ -6,7 +6,7 @@
 #include <thread>
 #include <barrier>
 
-using namespace std; // Include this line to avoid using "std::" prefix
+using namespace std; 
 
 barrier raceBarrier(4); // Barrier for 4 runners
 
