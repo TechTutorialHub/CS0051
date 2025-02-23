@@ -6,8 +6,7 @@
 #include <thread>
 #include <semaphore>
 
-using namespace std; // Include this line to avoid using "std::" prefix
-
+using namespace std; 
 counting_semaphore<3> parkingLot(3); // Parking lot with 3 spaces
 
 void parkCar(int id) {
