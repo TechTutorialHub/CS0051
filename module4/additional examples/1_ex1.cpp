@@ -8,7 +8,7 @@ similar to how a binary semaphore allows only one thread to access a critical se
 #include <thread>
 #include <semaphore>
 
-using namespace std; // Include this line to avoid using "std::" prefix
+using namespace std; 
 
 binary_semaphore trafficLight(1); // Traffic light is green initially
 
