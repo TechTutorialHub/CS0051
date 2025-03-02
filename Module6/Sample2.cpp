@@ -1,37 +1,83 @@
 #include <iostream>
+#include <fstream>
+#include <cstdlib>
+#include <ctime>
+#include <openacc.h>
+
 using namespace std;
 
-// Function for Bubble Sort (Transforming the array)
-void bubbleSort(int arr[], int size) {
-    for (int i = 0; i < size - 1; i++) {
-        for (int j = 0; j < size - i - 1; j++) {
-            if (arr[j] > arr[j + 1]) {
-                swap(arr[j], arr[j + 1]);
-            }
-        }
-        cout << "After iteration " << i + 1 << ": ";
-        for (int k = 0; k < size; k++) {
-            cout << arr[k] << " ";
-        }
-        cout << endl;
+void generateDataFile(const string &filename, int size) {
+    ofstream outFile(filename);
+    srand(time(0));
+
+    if (!outFile) {
+        cerr << "Error opening file for writing!" << endl;
+        return;
     }
+
+    for (int i = 0; i < size; i++) {
+        outFile << (rand() % 100) << endl;
+    }
+
+    outFile.close();
 }
 
-// Function to compute median
-double findMedian(int arr[], int size) {
-    bubbleSort(arr, size); // Sorting first
-    if (size % 2 == 1) {
-        return arr[size / 2]; // Odd case
-    } else {
-        return (arr[size / 2 - 1] + arr[size / 2]) / 2.0; // Even case
+void readDataFile(const string &filename, int arr[], int size) {
+    ifstream inFile(filename);
+
+    if (!inFile) {
+        cerr << "Error opening file for reading!" << endl;
+        return;
     }
+
+    for (int i = 0; i < size; i++) {
+        inFile >> arr[i];
+    }
+
+    inFile.close();
+}
+
+void writeDataFile(const string &filename, int arr[], int size) {
+    ofstream outFile(filename);
+
+    if (!outFile) {
+        cerr << "Error opening file for writing!" << endl;
+        return;
+    }
+
+    for (int i = 0; i < size; i++) {
+        outFile << arr[i] << endl;
+    }
+
+    outFile.close();
 }
 
 int main() {
-    int arr[5] = {30, 10, 50, 20, 40}; 
-    int size = 5;
-    double median = findMedian(arr, size);
-    cout << "Median is: " << median << endl;
+    int N;
+    cout << "Enter the number of data points: ";
+    cin >> N;
 
+    const string inputFile = "data.txt";
+    const string outputFile = "output.txt";
+    int *arr = new int[N];
+
+    generateDataFile(inputFile, N);
+    readDataFile(inputFile, arr, N);
+
+    // OpenACC parallelization
+    #pragma acc kernels
+    for (int i = 0; i < N; i++) {
+        arr[i] *= arr[i];
+    }
+
+    writeDataFile(outputFile, arr, N);
+
+    cout << "Processed Data (Squared Values): ";
+    for (int i = 0; i < N; i++) {
+        cout << arr[i] << " ";
+    }
+    cout << endl;
+
+    delete[] arr;
     return 0;
 }
