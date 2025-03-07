@@ -6,7 +6,7 @@
 #include <openacc.h>
 
 using namespace std;
-const int N 5;
+const int N = 5;
 
 int main(){
     int arr[N] = {1,2,3,4,5};
