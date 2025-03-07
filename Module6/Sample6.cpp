@@ -6,7 +6,7 @@
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
-#include <omp.h>
+#include <openacc.h>
 
 using namespace std;
 
@@ -39,7 +39,8 @@ int main() {
     printMatrix("Matrix B", B);
 
     // Parallel Matrix Addition
-    #pragma omp parallel for collapse(2)
+    #pragma acc parallel loop collapse(2)
+    //ensure i and j are  parallel
     for (int i = 0; i < N; i++)
         for (int j = 0; j < N; j++)
             C[i][j] = A[i][j] + B[i][j];
