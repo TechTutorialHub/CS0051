@@ -1,5 +1,7 @@
 OPEN ACC Directives
 
+https://www.openacc.org/sites/default/files/inline-files/OpenACC_2_0_specification.pdf
+
 #pragma acc > directive (optimize) part of a program
 The directive improves the performance by offloading computation to the GPU
     Bitcoin, AI, image processing
