@@ -12,7 +12,7 @@ The directive improves the performance by offloading computation to the GPU
 
 
 
-
+In OpenACC, the primary directives include: "acc kernels" to mark a loop for parallel execution on the accelerator, "acc data" to manage data transfer between host and device memory, "acc loop" to specify a loop for offloading, "acc parallel" for parallel execution, "acc wait" to synchronize threads, "acc update" to copy data back from the device, "acc declare" to declare variables on the device, and "acc cache" to control data caching on the accelerator; all used within a "#pragma" statement to indicate compiler instructions. 
 
 
 
