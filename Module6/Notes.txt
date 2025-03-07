@@ -1,1 +1,20 @@
+OPEN ACC Directives
+
+#pragma acc > directive (optimize) part of a program
+The directive improves the performance by offloading computation to the GPU
+    Bitcoin, AI, image processing
+
+#pragma acc parallel - Runs code in parallel -> Loop execution
+#pragma acc kernels - Detect and offloads computation automatically - Matrix Multiplication 
+#pragma acc loops - Marks a loop for parallel execution - Nested loops processing
+#pragma acc parallel loop - performs reduction operation - sum calculation
+#pragma acc data copy (var) - Manage data transfer between the CPU and GPU - Sorting
+
+
+
+
+
+
+
+
 
