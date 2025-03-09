@@ -11,6 +11,7 @@ The directive improves the performance by offloading computation to the GPU
 #pragma acc loops - Marks a loop for parallel execution - Nested loops processing
 #pragma acc parallel loop - performs reduction operation - sum calculation
 #pragma acc data copy (var) - Manage data transfer between the CPU and GPU - Sorting
+#pragma acc atomic - Ensures correct memory updates in parallel execution
 
 
 
